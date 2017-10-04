@@ -1,0 +1,17 @@
+<!DOCTYPE.html>
+<html>
+    <head>
+        <title>Log In</title>
+    </head>
+    <body>
+        {{ errorMessage }}             
+    </body>
+</html>
+
+<!-->
+@app.route('/logout')
+def logout():
+   # remove the username from the session if it is there
+   session.pop('username', None)idhdee
+   return redirect(url_for('index')) 
+   
