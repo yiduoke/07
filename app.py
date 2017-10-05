@@ -20,16 +20,15 @@ def login():
     else:
         return render_template("error.html",errorMessage="wrong password")
 
-@my_app.route("/error")
-def error():
-    if (request.form["username"]!="un"):
-        return render_template("error.html", errorMessage="wrong username")
-    elif (request.form["password"]!="pw"):
-        return render_template("error.html", errorMessage="wrong password")
+# @my_app.route("/loggedin", methods=["POST"])
+# def loggedin():
+#     return render_template("loggedin.html",username=session["username"])
 
-def error():
-  session.pop('username')
-  return "You have logged out"
+@my_app.route("/logout", methods=["POST"])
+def logout():
+    session.pop("username")
+    session.pop("password")
+    return render_template("login.html")
 
 if __name__ == "__main__":
     my_app.debug = True
