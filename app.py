@@ -7,6 +7,8 @@ my_app.secret_key = 'who cares about security'
 
 @my_app.route('/')
 def root():
+    if session.has_key("username"):
+        return render_template("loggedin.html", username = session["username"])
     return render_template("login.html")
   
 @my_app.route("/login", methods=["POST"])
